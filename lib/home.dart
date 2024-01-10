@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
             height: height,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/pid_bg.png'), fit: BoxFit.cover)),
+                    image: AssetImage('assets/pid_bg2.png'), fit: BoxFit.cover)),
             child:ListView(
               shrinkWrap: true,
               // mainAxisAlignment: MainAxisAlignment.center,
@@ -123,8 +123,9 @@ Widget buttonImage({imageAsset, onTap}) {
       onTap();
     },
     child: Container(
-      decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage('assets/${imageAsset}'))),
+      decoration: BoxDecoration(image: 
+        DecorationImage(image: AssetImage('assets/${imageAsset}'))
+      ),
       width: 400,
       height: 212.5,
     ),
