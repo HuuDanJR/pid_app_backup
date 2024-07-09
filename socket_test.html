@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Socket.io Test</title>
+  <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+</head>
+<body>
+  <h1>Socket.io Test</h1>
+  <div id="status">Connecting...</div>
+  <script>
+    // Connect to the Socket.IO server
+    const socket = io('http://localhost:3001/'); // Replace with your server IP and port
+
+    socket.on('connect', () => {
+      console.log('Connected to server:', socket.id);
+      document.getElementById('status').innerText = 'Connected to server';
+    });
+
+    socket.on('machineOnlineStatus', (data) => {
+      console.log('Received machineOnlineStatus:', data);
+      const dataDiv = document.createElement('div');
+      dataDiv.innerText = `Machine Online Status: ${JSON.stringify(data)}`;
+      document.body.appendChild(dataDiv);
+    });
+
+    socket.on('disconnect', () => {
+      console.log('Disconnected from server');
+      document.getElementById('status').innerText = 'Disconnected from server';
+    });
+
+    socket.on('connect_error', (error) => {
+      console.log('Connection Error:', error);
+      document.getElementById('status').innerText = 'Connection Error';
+    });
+  </script>
+</body>
+</html>
