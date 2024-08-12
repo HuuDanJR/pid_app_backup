@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:pid_controller/model/pidmodel.dart';
 import 'package:pid_controller/service_api.dart';
+import 'package:pid_controller/switch/view/switch_view.dart';
 // import 'package:pid_controller/socket_manager.dart';
 import 'package:pid_controller/widget/custom_snackbar.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   final service_api = ServiceAPIs();
-  late PidModel model_pid = PidModel(rl1: '0', rl2: '0', bc3: '0', bc4: '0',ads:'0');
-  // final socketIO = SocketManager();
+  late PidModel model_pid = PidModel(rl1: '2', rl2: '4', bc3: '1', bc4: '0',ads:'9');
   @override
   void initState() {
     //INIT SOCKET
-    // socketIO.initSocket();
-    //INIT API
     service_api.fetchEnum().then((value) {
       setState(() {
         model_pid = value;
@@ -39,8 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
             width: width,
             height: height,
             decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/pid_bg2.png'), fit: BoxFit.cover)),
+                image: DecorationImage( image: AssetImage('assets/pid_bg2.png'), fit: BoxFit.cover)),
             child:ListView(
               shrinkWrap: true,
               // mainAxisAlignment: MainAxisAlignment.center,
@@ -102,9 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         onTap: () {
                           debugPrint('tap4');
                            service_api.loadPresetByID(int.parse(model_pid.bc4)).then((value) {
-                            customSnackBar(
-                                      context: context,
-                                      message: '$value');
+                            customSnackBar( context: context,message: '$value');
                           });
                         },
                         imageAsset: 'pid_bc4.png')
@@ -117,7 +111,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 //     buttonImage(
                 //         onTap: () {
                 //           debugPrint('tap5');
-                //            service_api.loadPresetByID(int.parse(model_pid.ads)).then((value) {
+                //         fxzku  \
+                //0e    service_api.loadPresetByID(int.parse(model_pid.ads)).then((value) {
                 //             customSnackBar(
                 //                       context: context,
                 //                       message: '$value');
@@ -130,7 +125,29 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          
+          //Switch Button
+          Positioned(
+            bottom: 16.0,
+            right: 16.0,
+            child: 
+            // TextButton(child: Text("data"),onPressed: (){},)
+            SwitchButton()
+            ),
+          //button ads screen
+          Positioned(
+            bottom: 16.0,
+            left: 16.0,
+            child: 
+            TextButton.icon(
+              icon: const Icon(Icons.ads_click,color:Colors.green),
+              onPressed: (){
+                service_api.loadPresetByID(int.parse(model_pid.ads)).then((value) {
+                    customSnackBar( context: context,message: '$value');
+                });
+              }, label: Text('ADS DISPLAY',style:TextStyle(
+              color:Colors.white
+            )))
+            ),
         ],
       ),
     );

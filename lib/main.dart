@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pid_controller/home.dart';
-import 'package:pid_controller/test.dart';
+import 'package:pid_controller/switch/bloc/switch_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +21,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: const TestPage(),
-      home: const MyHomePage(),
+      home: MultiBlocProvider(
+        providers: [
+            BlocProvider<SwitchBloc>(
+              create: (context) => SwitchBloc(),
+            ),
+          ],
+        child: const MyHomePage()),
     );
   }
 }
