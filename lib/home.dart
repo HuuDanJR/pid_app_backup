@@ -131,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
             right: 16.0,
             child: 
             // TextButton(child: Text("data"),onPressed: (){},)
-            SwitchButton()
+             SwitchButton(),
             ),
           //button ads screen
           Positioned(
