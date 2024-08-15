@@ -14,22 +14,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'PID Controller V2',
+      title: 'PID Controller V.BackUp',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       // home: const TestPage(),
-      home: MultiBlocProvider(
-        providers: [
-            BlocProvider<SwitchBloc>(
-              create: (context) => SwitchBloc(),
-            ),
-          ],
-        child: const MyHomePage()),
+      home: MultiBlocProvider(providers: [
+        BlocProvider<SwitchBloc>(
+          create: (context) => SwitchBloc(),
+        ),
+      ], child: const MyHomePage()),
     );
   }
 }
-
-

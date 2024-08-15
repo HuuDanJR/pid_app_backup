@@ -13,7 +13,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final service_api = ServiceAPIs();
   late PidModel model_pid =
-      PidModel(rl1: '2', rl2: '4', bc3: '1', bc4: '0', ads: '9');
+      PidModel(rl1: '0', rl2: '0', bc3: '0', bc4: '0', ads: '0');
   @override
   void initState() {
     //INIT SOCKET
@@ -56,11 +56,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     buttonImage(
                         onTap: () {
                           debugPrint('tap1 ${model_pid.rl1}');
-                          // service_api
-                          //     .loadPresetByID(int.parse(model_pid.rl1))
-                          //     .then((value) {
-                          //   customSnackBar(context: context, message: '$value');
-                          // });
+                          service_api
+                              .loadPresetByID(int.parse(model_pid.rl1))
+                              .then((value) {
+                            customSnackBar(context: context, message: '$value');
+                          });
                         },
                         imageAsset: 'pid_rl1.png'),
                     // const SizedBox(
@@ -69,12 +69,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     buttonImage(
                         onTap: () {
                           debugPrint('tap2');
-                          // id 3
-                          // service_api
-                          //     .loadPresetByID(int.parse(model_pid.rl2))
-                          //     .then((value) {
-                          //   customSnackBar(context: context, message: '$value');
-                          // });
+                          service_api
+                              .loadPresetByID(int.parse(model_pid.rl2))
+                              .then((value) {
+                            customSnackBar(context: context, message: '$value');
+                          });
                         },
                         imageAsset: 'pid_rl2.png')
                   ],
@@ -86,11 +85,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     buttonImage(
                         onTap: () {
                           debugPrint('tap3');
-                          // service_api
-                          //     .loadPresetByID(int.parse(model_pid.bc3))
-                          //     .then((value) {
-                          //   customSnackBar(context: context, message: '$value');
-                          // });
+                          service_api
+                              .loadPresetByID(int.parse(model_pid.bc3))
+                              .then((value) {
+                            customSnackBar(context: context, message: '$value');
+                          });
                         },
                         imageAsset: 'pid_bc3.png'),
                     // const SizedBox(
@@ -99,11 +98,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     buttonImage(
                         onTap: () {
                           debugPrint('tap4');
-                          // service_api
-                          //     .loadPresetByID(int.parse(model_pid.bc4))
-                          //     .then((value) {
-                          //   customSnackBar(context: context, message: '$value');
-                          // });
+                          service_api
+                              .loadPresetByID(int.parse(model_pid.bc4))
+                              .then((value) {
+                            customSnackBar(context: context, message: '$value');
+                          });
                         },
                         imageAsset: 'pid_bc4.png')
                   ],
@@ -112,26 +111,31 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          //Switch Button
           Positioned(
-            bottom: 16.0,
-            right: 16.0,
-            child:  SwitchButton(),
+            top:16.0,
+            right:16.0,
+            child: Text('BACK UP VER',style:TextStyle(color:Colors.grey,fontSize:36.0,fontWeight:  FontWeight.bold)),
           ),
-          //button ads screen
-          Positioned(
-              bottom: 16.0,
-              left: 16.0,
-              child: TextButton.icon(
-                  icon: const Icon(Icons.ads_click, color: Colors.green),
-                  onPressed: () {
-                    // service_api
-                    //     .loadPresetByID(int.parse(model_pid.ads))
-                    //     .then((value) {
-                    //   customSnackBar(context: context, message: '$value');
-                    // });
-                  },
-                  label: const Text('ADS DISPLAY', style: TextStyle(color: Colors.white)))),
+          // //Switch Button
+          // Positioned(
+          //   bottom: 16.0,
+          //   right: 16.0,
+          //   child:  SwitchButton(),
+          // ),
+          // //button ads screen
+          // Positioned(
+          //     bottom: 16.0,
+          //     left: 16.0,
+          //     child: TextButton.icon(
+          //         icon: const Icon(Icons.ads_click, color: Colors.green),
+          //         onPressed: () {
+          //           // service_api
+          //           //     .loadPresetByID(int.parse(model_pid.ads))
+          //           //     .then((value) {
+          //           //   customSnackBar(context: context, message: '$value');
+          //           // });
+          //         },
+          //         label: const Text('ADS DISPLAY', style: TextStyle(color: Colors.white)))),
         ],
       ),
     );
