@@ -4,10 +4,10 @@ import 'package:pid_controller/model/pidmodel.dart';
 
 class ServiceAPIs {
   final Dio dio = Dio();
-  final BASE_URL = 'http://30.0.0.79:3001';
-  final BASE_URL_SOCKET = 'http://30.0.0.79:3001/';
-  // final BASE_URL = 'http://192.168.101.58:3001';
-  // final BASE_URL_SOCKET = 'http://192.168.101.58:3001/';
+  // final BASE_URL = 'http://30.0.0.79:3001';
+  // final BASE_URL_SOCKET = 'http://30.0.0.79:3001/';
+  final BASE_URL = 'http://192.168.101.58:8085';
+  final BASE_URL_SOCKET = 'http://192.168.101.58:3001/';
 
   Future fetchEnum() async {
     try {

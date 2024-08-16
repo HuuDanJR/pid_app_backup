@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
             height: height,
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/pid_bg2.png'),
+                    image: AssetImage('assets/bg2.jpeg'),
                     fit: BoxFit.cover)),
             child: ListView(
               shrinkWrap: true,
@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
               // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: height * .315,
+                  height: height * .3,
                   // height: height*.315,
                   width: width,
                 ),
@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             customSnackBar(context: context, message: '$value');
                           });
                         },
-                        imageAsset: 'pid_rl1.png'),
+                        imageAsset: 'img_landscape.png'),
                     // const SizedBox(
                     //   width: 35,
                     // ),
@@ -75,9 +75,10 @@ class _MyHomePageState extends State<MyHomePage> {
                             customSnackBar(context: context, message: '$value');
                           });
                         },
-                        imageAsset: 'pid_rl2.png')
+                        imageAsset: 'img_forest.png')
                   ],
                 ),
+                SizedBox(height: 16.0,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -91,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             customSnackBar(context: context, message: '$value');
                           });
                         },
-                        imageAsset: 'pid_bc3.png'),
+                        imageAsset: 'img_under.png'),
                     // const SizedBox(
                     //   width: 35,
                     // ),
@@ -104,18 +105,18 @@ class _MyHomePageState extends State<MyHomePage> {
                             customSnackBar(context: context, message: '$value');
                           });
                         },
-                        imageAsset: 'pid_bc4.png')
+                        imageAsset: 'img_van.png')
                   ],
                 ),
                 
               ],
             ),
           ),
-          Positioned(
-            top:16.0,
-            right:16.0,
-            child: Text('BACK UP VER',style:TextStyle(color:Colors.grey,fontSize:36.0,fontWeight:  FontWeight.bold)),
-          ),
+          // Positioned(
+          //   top:16.0,
+          //   right:16.0,
+          //   child: Text('BACK UP VER',style:TextStyle(color:Colors.grey,fontSize:36.0,fontWeight:  FontWeight.bold)),
+          // ),
           // //Switch Button
           // Positioned(
           //   bottom: 16.0,
@@ -150,8 +151,8 @@ Widget buttonImage({imageAsset, onTap}) {
     child: Container(
       decoration: BoxDecoration(
           image: DecorationImage(image: AssetImage('assets/$imageAsset'))),
-      width: 400,
-      height: 212.5,
+      width: 385,
+      height: 200,
     ),
   );
 }
