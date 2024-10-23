@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pid_controller/model/pidmodel.dart';
 import 'package:pid_controller/service_api.dart';
-import 'package:pid_controller/switch/view/switch_view.dart';
 import 'package:pid_controller/widget/custom_snackbar.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -12,8 +11,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final service_api = ServiceAPIs();
-  late PidModel model_pid =
-      PidModel(rl1: '0', rl2: '0', bc3: '0', bc4: '0', ads: '0');
+  late PidModel model_pid =PidModel(rl1: '0', rl2: '0', bc3: '0', bc4: '0',bc5: "0",bc6: "0", ads: '0');
   @override
   void initState() {
     //INIT SOCKET
@@ -62,10 +60,10 @@ class _MyHomePageState extends State<MyHomePage> {
                             customSnackBar(context: context, message: '$value');
                           });
                         },
-                        imageAsset: 'img_landscape.png'),
-                    // const SizedBox(
-                    //   width: 35,
-                    // ),
+                        imageAsset: 'new/image_loch.png'),
+                    const SizedBox(
+                      width: 16.0,
+                    ),
                     buttonImage(
                         onTap: () {
                           debugPrint('tap2');
@@ -75,14 +73,10 @@ class _MyHomePageState extends State<MyHomePage> {
                             customSnackBar(context: context, message: '$value');
                           });
                         },
-                        imageAsset: 'img_forest.png')
-                  ],
-                ),
-                SizedBox(height: 16.0,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
+                        imageAsset: 'new/image_sequoia.png'),
+                    const SizedBox(
+                      width: 16.0,
+                    ),
                     buttonImage(
                         onTap: () {
                           debugPrint('tap3');
@@ -92,20 +86,50 @@ class _MyHomePageState extends State<MyHomePage> {
                             customSnackBar(context: context, message: '$value');
                           });
                         },
-                        imageAsset: 'img_under.png'),
-                    // const SizedBox(
-                    //   width: 35,
-                    // ),
+                        imageAsset: 'new/image_aurora.png')
+                  ],
+                ),
+                const SizedBox(height: 24.0,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
                     buttonImage(
                         onTap: () {
-                          debugPrint('tap4');
+                          debugPrint('tap 4');
                           service_api
                               .loadPresetByID(int.parse(model_pid.bc4))
                               .then((value) {
                             customSnackBar(context: context, message: '$value');
                           });
                         },
-                        imageAsset: 'img_van.png')
+                        imageAsset: 'new/image_island.png'),
+                    const SizedBox(
+                      width: 16.0,
+                    ),
+                    buttonImage(
+                        onTap: () {
+                          debugPrint('tap 5');
+                          service_api
+                              .loadPresetByID(int.parse(model_pid.bc5))
+                              .then((value) {
+                            customSnackBar(context: context, message: '$value');
+                          });
+                        },
+                        imageAsset: 'new/image_temblor.png'),
+                    const SizedBox(
+                      width: 16.0,
+                    ),
+                    buttonImage(
+                        onTap: () {
+                          debugPrint('tap 6');
+                          service_api
+                              .loadPresetByID(int.parse(model_pid.bc6))
+                              .then((value) {
+                            customSnackBar(context: context, message: '$value');
+                          });
+                        },
+                        imageAsset: 'new/image_steppe.png')
                   ],
                 ),
                 
@@ -151,8 +175,8 @@ Widget buttonImage({imageAsset, onTap}) {
     child: Container(
       decoration: BoxDecoration(
           image: DecorationImage(image: AssetImage('assets/$imageAsset'))),
-      width: 385,
-      height: 200,
+      width: 325,
+      height: 185,
     ),
   );
 }
